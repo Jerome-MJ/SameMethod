@@ -1,9 +1,9 @@
-package com.mj93.samefuncplugin.util
+package com.mj93.samemethod.util
 
 import com.android.build.api.transform.*
 import com.android.utils.FileUtils
-import com.mj93.samefuncplugin.Const
-import com.mj93.samefuncplugin.visitor.SFClassVisitor
+import com.mj93.samemethod.Const
+import com.mj93.samemethod.visitor.SFClassVisitor
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.Opcodes

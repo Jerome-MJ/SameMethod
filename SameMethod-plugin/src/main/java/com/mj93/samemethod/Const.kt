@@ -1,6 +1,6 @@
-package com.mj93.samefuncplugin
+package com.mj93.samemethod
 
-import com.mj93.samefuncplugin.bean.SameFuncBean
+import com.mj93.samemethod.bean.SameFuncBean
 
 /**
  * @Title:

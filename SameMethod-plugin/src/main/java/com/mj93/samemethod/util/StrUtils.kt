@@ -1,4 +1,4 @@
-package com.mj93.samefuncplugin.util
+package com.mj93.samemethod.util
 
 import java.util.*
 

@@ -24,7 +24,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             //设置插件的GAV参数
-            pom.groupId = 'com.mj93.sdk'//你的包名
+            pom.groupId = 'com.mj93'//你的包名
             pom.artifactId = 'SMPlugin'
             pom.version = '1.26' //版本号
             //文件发布到下面目录  ../是父目录

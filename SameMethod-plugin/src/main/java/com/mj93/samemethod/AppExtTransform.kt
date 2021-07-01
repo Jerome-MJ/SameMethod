@@ -1,11 +1,11 @@
-package com.mj93.samefuncplugin
+package com.mj93.samemethod
 
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.google.gson.Gson
-import com.mj93.samefuncplugin.util.TransformHelper
+import com.mj93.samemethod.util.TransformHelper
 import java.io.File
 import java.io.PrintWriter
 
@@ -39,7 +39,8 @@ class AppExtTransform(val appExt: AppExt) : Transform() {
         Const.samesList.clear()
         Const.samesMap.clear()
         Const.appExt=appExt
-
+        println("------------开始查找相似方法--------------")
+        val currentTimeMillis = System.currentTimeMillis();
         if (transformInvocation != null) {
             transformInvocation.outputProvider.deleteAll()
             for (transformInput in transformInvocation.inputs) {
@@ -59,7 +60,8 @@ class AppExtTransform(val appExt: AppExt) : Transform() {
                 }
             }
         }
-        println("samefunc:count:${Const.samesMap.size} complete")
+        val cost = System.currentTimeMillis() - currentTimeMillis
+        println("------------结束查找相似方法,耗时${cost},找出${Const.samesMap.size}类相似方法--------------")
         var file = File(appExt.sameFuncOutputFilePath+"/"+appExt.sameFuncOutputFileName)
         val printWriter = PrintWriter(file)
         printWriter.write(Gson().toJson(Const.samesMap))

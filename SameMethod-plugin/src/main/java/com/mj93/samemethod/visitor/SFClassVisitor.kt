@@ -1,24 +1,17 @@
-package com.mj93.samefuncplugin.visitor
+package com.mj93.samemethod.visitor
 
-import com.google.gson.Gson
-import com.mj93.samefuncplugin.AppExt
-import com.mj93.samefuncplugin.Const
-import com.mj93.samefuncplugin.SameFuncPlugin
-import com.mj93.samefuncplugin.bean.SameFuncBean
-import com.mj93.samefuncplugin.util.StrUtils
+import com.mj93.samemethod.AppExt
+import com.mj93.samemethod.Const
+import com.mj93.samemethod.bean.SameFuncBean
+import com.mj93.samemethod.util.StrUtils
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
-import org.objectweb.asm.MethodVisitor
-import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.*
 import org.objectweb.asm.util.Printer
 import org.objectweb.asm.util.Textifier
 import org.objectweb.asm.util.TraceMethodVisitor
-import java.io.File
-import java.io.FileOutputStream
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.sql.Struct
 
 
 /**
