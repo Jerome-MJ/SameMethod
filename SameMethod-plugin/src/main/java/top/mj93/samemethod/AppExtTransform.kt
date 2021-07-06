@@ -62,7 +62,7 @@ class AppExtTransform(val appExt: AppExt) : Transform() {
             }
         }
         val cost = System.currentTimeMillis() - currentTimeMillis
-        LogUtils.println("------------结束查找相似方法,耗时${cost},找出${Const.samesMap.size}类相似方法--------------")
+        LogUtils.println("------------结束查找相似方法,共比较${Const.COMPARE_COUNT}次，耗时${cost},找出${Const.samesMap.size}类相似方法--------------")
         var file = File(appExt.sameFuncOutputFilePath+"/samefunc.json")
         val printWriter = PrintWriter(file)
         printWriter.write(Gson().toJson(Const.samesMap))

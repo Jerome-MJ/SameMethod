@@ -13,4 +13,5 @@ internal object Const {
     var samesMap = mutableMapOf<String, MutableList<String>>()
     var samesList = mutableListOf<SameFuncBean>()
     var appExt: AppExt? = null
+    var COMPARE_COUNT=0
 }

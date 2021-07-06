@@ -46,13 +46,13 @@ class SFClassVisitor(
         if(appExt?.sameFuncSwitch!!){
             if(appExt.filterContainsName!=null){
                 for(s in appExt.filterContainsName!!){
-                    if(className!!.contains(s))return
+                    if(className!!.contains(s,false))return
                 }
             }
 
             if(appExt.filterListName!=null){
                 for(s in appExt.filterListName!!){
-                    if(!className!!.startsWith(s))return
+                    if(!className!!.contains(s,false))return
                 }
             }
             LogUtils.println(className!!)
@@ -86,6 +86,7 @@ class SFClassVisitor(
                 for (s in Const.samesList) {
                     if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
                     var len = StrUtils.AnotherCompare(s.content, replace)
+                    Const.COMPARE_COUNT++
                     if (len > appExt!!.sameFuncRadio) {
                         LogUtils.println("${s.content}-----${replace}的相似度：" + len)
                         val key = "${s.className}_${s.funcName}"
