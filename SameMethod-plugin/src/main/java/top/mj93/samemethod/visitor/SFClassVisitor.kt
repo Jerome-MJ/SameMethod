@@ -50,11 +50,13 @@ class SFClassVisitor(
                 }
             }
 
+            var isContains=false
             if(appExt.filterListName!=null){
                 for(s in appExt.filterListName!!){
-                    val b = className!!.contains(s, true)
-                    LogUtils.println("类名${className!!}--内容${s}--结果:$b")
-                    if(!b)return
+                    isContains = className!!.contains(s, true)
+                }
+                if(!isContains){
+                    return
                 }
             }
             LogUtils.println(className!!)
