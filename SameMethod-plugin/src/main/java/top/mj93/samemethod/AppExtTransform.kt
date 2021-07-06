@@ -41,8 +41,8 @@ class AppExtTransform(val appExt: AppExt) : Transform() {
         Const.samesMap.clear()
         Const.appExt =appExt
         LogUtils.println("------------开始查找相似方法--------------",false)
-        LogUtils.println("输出配置项：${appExt}")
-        val currentTimeMillis = System.currentTimeMillis();
+        LogUtils.println("输出配置项：${appExt.filterListName}")
+        val currentTimeMillis = System.currentTimeMillis()
         if (transformInvocation != null) {
             transformInvocation.outputProvider.deleteAll()
             for (transformInput in transformInvocation.inputs) {
