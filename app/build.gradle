@@ -35,12 +35,11 @@ android {
 
 
 SameFuncExt{
-    filterStartName=["com/google","kotlin/","org/intellij","org/jetbrains"]
-    filterEndName=["/R"]
-    filterName=[""]
     filterContainsName=["R\$"]
     sameFuncSwitch=true
     sameFuncRadio=0.95
+    filterListName=["top.mj93"]
+    sameFuncOutputFilePath="../"
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package com.mj93.samemethod.bean
+package top.mj93.samemethod.bean
 
 /**
  * @Title:

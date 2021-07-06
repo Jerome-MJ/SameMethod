@@ -1,4 +1,4 @@
-package com.mj93.samemethod
+package top.mj93.samemethod
 
 /**
  * @Title:
@@ -8,12 +8,9 @@ package com.mj93.samemethod
  * @version V1.0
  */
 open class AppExt {
-    var filterStartName: Array<String> ?=null
-    var filterEndName: Array<String> ?=null
-    var filterName: Array<String> ?=null
     var filterContainsName: Array<String> ?=null
+    var filterListName: Array<String> ?=null
     var sameFuncSwitch=false
     var sameFuncRadio=0.8f
     var sameFuncOutputFilePath:String?=null
-    var sameFuncOutputFileName:String?=null
 }

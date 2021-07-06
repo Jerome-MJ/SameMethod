@@ -1,4 +1,4 @@
-package com.mj93.samemethod.util
+package top.mj93.samemethod.util
 
 import java.io.*
 

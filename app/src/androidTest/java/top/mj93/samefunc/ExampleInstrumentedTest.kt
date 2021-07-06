@@ -1,4 +1,4 @@
-package com.mj93.samefunc
+package top.mj93.samefunc
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

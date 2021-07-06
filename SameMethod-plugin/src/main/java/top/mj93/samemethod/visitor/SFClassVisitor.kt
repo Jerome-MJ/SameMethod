@@ -1,15 +1,17 @@
-package com.mj93.samemethod.visitor
+package top.mj93.samemethod.visitor
 
-import com.mj93.samemethod.AppExt
-import com.mj93.samemethod.Const
-import com.mj93.samemethod.bean.SameFuncBean
-import com.mj93.samemethod.util.StrUtils
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.*
 import org.objectweb.asm.util.Printer
 import org.objectweb.asm.util.Textifier
 import org.objectweb.asm.util.TraceMethodVisitor
+import top.mj93.samemethod.AppExt
+import top.mj93.samemethod.Const
+import top.mj93.samemethod.bean.SameFuncBean
+import top.mj93.samemethod.util.LogUtils
+import top.mj93.samemethod.util.StrUtils
 import java.io.PrintWriter
 import java.io.StringWriter
 
@@ -40,29 +42,20 @@ class SFClassVisitor(
     ) {
         super.visit(version, access, name, signature, superName, interfaces)
         this.className = name
-
+        this.className = className!!.replace("/".toRegex(), ".").replace("\\\\".toRegex(), ".")
         if(appExt?.sameFuncSwitch!!){
-            if(appExt.filterName !=null){
-                for(s in appExt.filterName!!){
-                    if(s==className)return
-                }
-            }
             if(appExt.filterContainsName!=null){
                 for(s in appExt.filterContainsName!!){
                     if(className!!.contains(s))return
                 }
             }
-            if(appExt.filterStartName!=null){
-                for(s in appExt.filterStartName!!){
-                    if(className!!.startsWith(s))return
+
+            if(appExt.filterListName!=null){
+                for(s in appExt.filterListName!!){
+                    if(!className!!.startsWith(s))return
                 }
             }
-            if(appExt.filterEndName!=null){
-                for(s in appExt.filterEndName!!){
-                    if(className!!.endsWith(s))return
-                }
-            }
-            println(className)
+            LogUtils.println(className!!)
             printSameFun(className!!)
         }
 
@@ -77,7 +70,11 @@ class SFClassVisitor(
             var sb = StringBuffer()
             for (n in methods) {
                 val inList: InsnList = n.instructions
-                if ("<init>".equals(n.name)) continue
+                if(inList.size()==0)return
+                if (isEmptyMethod(n) || isGetSetMethod(n) || isSingleMethod(n)) {
+                    continue
+                }
+                if ("<init>" == n.name || "<clinit>" == n.name || n.name.startsWith("access$")) { continue }
                 sb.append(n.name)
                 for (i in inList) {
                     if (i is LineNumberNode) continue
@@ -87,9 +84,10 @@ class SFClassVisitor(
                 }
                 val replace = sb.toString().replace(" ", "").replace("\n", "")
                 for (s in Const.samesList) {
+                    if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
                     var len = StrUtils.AnotherCompare(s.content, replace)
                     if (len > appExt!!.sameFuncRadio) {
-                        println("${s.content}-----${replace}的相似度：" + len)
+                        LogUtils.println("${s.content}-----${replace}的相似度：" + len)
                         val key = "${s.className}_${s.funcName}"
                         if (Const.samesMap.containsKey(key)) {
                             Const.samesMap[key]?.add("${className}_${n.name}")
@@ -122,5 +120,43 @@ class SFClassVisitor(
     private val printer: Printer = Textifier()
     private val mp: TraceMethodVisitor = TraceMethodVisitor(printer)
 
-
+    private fun isEmptyMethod(methodNode: MethodNode): Boolean {
+        val iterator: ListIterator<AbstractInsnNode> = methodNode.instructions.iterator()
+        while (iterator.hasNext()) {
+            val insnNode = iterator.next()
+            val opcode = insnNode.opcode
+            if (-1 != opcode) {
+                return false
+            }
+        }
+        //System.out.println("FilterMethodVisitor : filter -----> isEmptyMethod:" + name);
+        return true
+    }
+    private fun isSingleMethod(methodNode: MethodNode): Boolean {
+        val iterator: ListIterator<AbstractInsnNode> = methodNode.instructions.iterator()
+        while (iterator.hasNext()) {
+            val insnNode = iterator.next()
+            val opcode = insnNode.opcode
+            if (Opcodes.INVOKEVIRTUAL <= opcode && opcode <= Opcodes.INVOKEDYNAMIC) {
+                return false
+            }
+        }
+        //System.out.println("FilterMethodVisitor : filter -----> isSingleMethod:" + name);
+        return true
+    }
+    private fun isGetSetMethod(methodNode: MethodNode): Boolean {
+        val iterator: ListIterator<AbstractInsnNode> = methodNode.instructions.iterator()
+        while (iterator.hasNext()) {
+            val insnNode = iterator.next()
+            val opcode = insnNode.opcode
+            if (-1 == opcode) {
+                continue
+            }
+            if (opcode != Opcodes.GETFIELD && opcode != Opcodes.GETSTATIC && opcode != Opcodes.H_GETFIELD && opcode != Opcodes.H_GETSTATIC && opcode != Opcodes.RETURN && opcode != Opcodes.ARETURN && opcode != Opcodes.DRETURN && opcode != Opcodes.FRETURN && opcode != Opcodes.LRETURN && opcode != Opcodes.IRETURN && opcode != Opcodes.PUTFIELD && opcode != Opcodes.PUTSTATIC && opcode != Opcodes.H_PUTFIELD && opcode != Opcodes.H_PUTSTATIC && opcode > Opcodes.SALOAD) {
+                return false
+            }
+        }
+        //System.out.println("FilterMethodVisitor : filter -----> isGetSetMethod:" + name);
+        return true
+    }
 }

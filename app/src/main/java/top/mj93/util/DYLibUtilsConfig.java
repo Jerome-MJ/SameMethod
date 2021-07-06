@@ -1,4 +1,4 @@
-package com.mj93.util;
+package top.mj93.util;
 
 import android.content.Context;
 

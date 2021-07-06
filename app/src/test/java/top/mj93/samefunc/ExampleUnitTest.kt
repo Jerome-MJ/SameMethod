@@ -1,4 +1,4 @@
-package com.mj93.samefunc
+package top.mj93.samefunc
 
 import org.junit.Test
 
