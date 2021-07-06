@@ -50,12 +50,12 @@ class SFClassVisitor(
                 }
             }
 
+            LogUtils.println(className!!)
             if(appExt.filterListName!=null){
                 for(s in appExt.filterListName!!){
                     if(!className!!.contains(s,false))return
                 }
             }
-            LogUtils.println(className!!)
             printSameFun(className!!)
         }
 

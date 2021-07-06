@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-//    id 'com.mj93.samefunc.plugin'
+    id 'com.mj93.samefunc.plugin'
 }
 
 android {
@@ -34,13 +34,13 @@ android {
 }
 
 
-//SameFuncExt{
-//    filterContainsName=["R\$"]
-//    sameFuncSwitch=true
-//    sameFuncRadio=0.95
-//    filterListName=["top.mj93"]
-//    sameFuncOutputFilePath="../"
-//}
+SameFuncExt{
+    filterContainsName=["R\$"]
+    sameFuncSwitch=true
+    sameFuncRadio=0.95
+    filterListName=["top.mj93"]
+    sameFuncOutputFilePath="../"
+}
 
 dependencies {
 
