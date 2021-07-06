@@ -46,14 +46,14 @@ class SFClassVisitor(
         if(appExt?.sameFuncSwitch!!){
             if(appExt.filterContainsName!=null){
                 for(s in appExt.filterContainsName!!){
-                    if(className!!.contains(s,false))return
+                    if(className!!.contains(s,true))return
                 }
             }
 
             LogUtils.println(className!!)
             if(appExt.filterListName!=null){
                 for(s in appExt.filterListName!!){
-                    if(!className!!.contains(s,false))return
+                    if(!className!!.contains(s,true))return
                 }
             }
             printSameFun(className!!)
