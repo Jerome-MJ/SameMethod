@@ -93,8 +93,8 @@ class SFClassVisitor(
                     var len = StrUtils.AnotherCompare(s.content, replace)
                     Const.COMPARE_COUNT++
                     if (len > appExt!!.sameFuncRadio) {
-                        LogUtils.println("${s.content}-----${replace}的相似度：" + len)
                         val key = "${s.className}_${s.funcName}"
+                        LogUtils.println("${key}-----${className}_${n.name}的相似度：" + len)
                         if (Const.samesMap.containsKey(key)) {
                             Const.samesMap[key]?.add("${className}_${n.name}")
                         } else {
