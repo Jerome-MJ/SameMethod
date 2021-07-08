@@ -83,6 +83,9 @@ class SFClassVisitor(
                 }
                 if (n.name.contains("toString"))continue
                 if ("<init>" == n.name || "<clinit>" == n.name || n.name.startsWith("access$")) { continue }
+                if (Const.appExt!!.blackList?.contains("${className}_${n.name}")!!){
+                    continue
+                }
                 sb.append(n.name)
                 for (i in inList) {
                     if (i is LineNumberNode) continue
