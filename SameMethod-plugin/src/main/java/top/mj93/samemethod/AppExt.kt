@@ -13,5 +13,6 @@ open class AppExt {
     var sameFuncSwitch=false
     var sameFuncRadio=0.8f
     var sameFuncOutputFilePath:String?="../"
+    var isSameClassCheck=false
     
 }

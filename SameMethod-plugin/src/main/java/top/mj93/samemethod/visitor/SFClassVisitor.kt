@@ -53,7 +53,10 @@ class SFClassVisitor(
             var isContains=false
             if(appExt.filterListName!=null){
                 for(s in appExt.filterListName!!){
-                    isContains = className!!.contains(s, true)
+                    if(className!!.contains(s, true)){
+                        isContains=true
+                        break
+                    }
                 }
                 if(!isContains){
                     return
@@ -94,7 +97,11 @@ class SFClassVisitor(
                 val replace = sb.toString()
 //                val replace = sb.toString()
                 for (s in Const.samesList) {
-                    if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
+                    if(Const.appExt!!.isSameClassCheck){
+                        if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
+                    }else{
+                        if(className == s.className)continue
+                    }
                     var len = StrUtils.AnotherCompare(s.content, replace)
                     Const.COMPARE_COUNT++
                     if (len > appExt!!.sameFuncRadio) {
