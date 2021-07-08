@@ -84,10 +84,15 @@ class SFClassVisitor(
                 for (i in inList) {
                     if (i is LineNumberNode) continue
                     if (i is LabelNode) continue
+                    if (i is LdcInsnNode) continue
                     val insnToString = insnToString(i)
+                    if(insnToString!!.length<20){
+                        continue
+                    }
                     sb.append(insnToString)
                 }
                 val replace = sb.toString().replace(" ", "").replace("\n", "")
+//                val replace = sb.toString()
                 for (s in Const.samesList) {
                     if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
                     var len = StrUtils.AnotherCompare(s.content, replace)
@@ -106,6 +111,7 @@ class SFClassVisitor(
                         break
                     }
                 }
+                sb.delete(0,sb.length)
                 var sambean = SameFuncBean(className, n.name, replace)
                 Const.samesList.add(sambean)
             }

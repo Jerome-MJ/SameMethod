@@ -8,6 +8,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "./repo" }
         maven { url "https://jitpack.io" }
     }
     dependencies {
@@ -15,6 +16,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath 'com.github.Jerome-MJ:SameMethod:1.0.3'
+//        classpath 'com.mj93.sdk:SMPlugin:1.1.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,6 +26,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {url "./repo"}
     }
 }
 

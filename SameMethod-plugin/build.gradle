@@ -1,7 +1,8 @@
 plugins {
     id 'java-library'
     id 'kotlin'
-    id 'com.github.dcendents.android-maven'
+    id 'maven'
+//    id 'com.github.dcendents.android-maven'
 }
 
 group='com.github.Jerome-MJ'
@@ -22,5 +23,18 @@ dependencies {
     implementation "org.ow2.asm:asm-tree:$asm_version"
     implementation 'com.google.code.gson:gson:2.8.5'
 }
+
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            //设置插件的GAV参数
+//            pom.groupId = 'com.mj93.sdk'//你的包名
+//            pom.artifactId = 'SMPlugin'
+//            pom.version = '1.1.2' //版本号
+//            //文件发布到下面目录  ../是父目录
+//            repository(url: uri('../repo'))
+//        }
+//    }
+//}
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.

@@ -17,9 +17,10 @@ object LogUtils {
 
 
     fun println(content:String,isAppend:Boolean=true){
-        val file = File(Const.appExt!!.sameFuncOutputFilePath + "/output.txt")
-        val printWriter = PrintWriter(FileOutputStream(file,isAppend))
-        printWriter.println(content)
-        printWriter.close()
+//        val file = File(Const.appExt!!.sameFuncOutputFilePath + "/output.txt")
+//        val printWriter = PrintWriter(FileOutputStream(file,isAppend))
+//        printWriter.println(content)
+//        printWriter.close()
+        System.out.println(content)
     }
 }

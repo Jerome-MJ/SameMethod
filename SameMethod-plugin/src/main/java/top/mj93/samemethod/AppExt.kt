@@ -12,6 +12,6 @@ open class AppExt {
     var filterListName: Array<String> ?=null
     var sameFuncSwitch=false
     var sameFuncRadio=0.8f
-    var sameFuncOutputFilePath:String?=null
+    var sameFuncOutputFilePath:String?="../"
     
 }
