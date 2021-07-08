@@ -39,7 +39,7 @@ internal object StrUtils {
                 }
             }
         }
-        return sameCount.toDouble()/ kotlin.math.min(split1.size, split2.size)
+        return sameCount.toDouble()/ ((split1.size+split2.size)/2)
     }
 
 
