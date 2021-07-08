@@ -91,7 +91,7 @@ class SFClassVisitor(
                     }
                     sb.append(insnToString)
                 }
-                val replace = sb.toString().replace(" ", "").replace("\n", "")
+                val replace = sb.toString()
 //                val replace = sb.toString()
                 for (s in Const.samesList) {
                     if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
