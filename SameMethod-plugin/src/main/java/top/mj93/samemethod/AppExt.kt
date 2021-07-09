@@ -13,7 +13,7 @@ open class AppExt {
     var blackList:Array<String> ? =null
     var sameFuncSwitch=false
     var sameFuncRadio=0.8f
-    var sameFuncOutputFilePath:String?="../"
-    var isSameClassCheck=false
+    var sameFuncOutputFilePath:String?=""
+    var sameClassCheck=false
     
 }

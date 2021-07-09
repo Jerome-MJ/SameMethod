@@ -24,7 +24,10 @@ class SameFuncPlugin : Plugin<Project> {
         val appExt = project.extensions.create("SameFuncExt", AppExt::class.java)
         if(appExt.sameFuncOutputFilePath==null){
             appExt.sameFuncOutputFilePath=project.buildFile.path+"/samefunc"
-            File(appExt.sameFuncOutputFilePath).mkdir()
+        }
+        val file = File(appExt.sameFuncOutputFilePath)
+        if(!file.exists()){
+            file.mkdir()
         }
         appExtTransform?.registerTransform(AppExtTransform(appExt))
     }

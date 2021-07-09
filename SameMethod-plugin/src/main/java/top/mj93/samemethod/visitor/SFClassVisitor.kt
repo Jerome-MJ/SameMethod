@@ -62,7 +62,6 @@ class SFClassVisitor(
                     return
                 }
             }
-            LogUtils.println(className!!)
             printSameFun(className!!)
         }
 
@@ -100,7 +99,7 @@ class SFClassVisitor(
                 val replace = sb.toString()
 //                val replace = sb.toString()
                 for (s in Const.samesList) {
-                    if(Const.appExt!!.isSameClassCheck){
+                    if(Const.appExt!!.sameClassCheck){
                         if("${className}_${n.name}" == "${s.className}_${s.funcName}")continue
                     }else{
                         if(className == s.className)continue
