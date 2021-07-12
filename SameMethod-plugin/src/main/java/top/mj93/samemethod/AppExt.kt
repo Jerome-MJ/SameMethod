@@ -8,7 +8,7 @@ package top.mj93.samemethod
  * @version V1.0
  */
 open class AppExt {
-
+    var filterContainsName: Array<String> ?=null
     var filterListName: Array<String> ?=null
     var blackList:Array<String> ? =null
     var sameFuncSwitch=false
