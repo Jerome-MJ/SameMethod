@@ -32,14 +32,12 @@ internal object StrUtils {
         val split2 = string2.split("\n")
         var sameCount = 0
         for (s in split1){
-            for(s2 in split2){
-                if(s == s2){
-                    sameCount+=1
-                    break
-                }
+            if(s in split2){
+                sameCount+=1
+                break
             }
         }
-        return sameCount.toDouble()/ ((split1.size+split2.size)/2)
+        return sameCount.toDouble()/ kotlin.math.min(split1.size, split2.size)
     }
 
 
