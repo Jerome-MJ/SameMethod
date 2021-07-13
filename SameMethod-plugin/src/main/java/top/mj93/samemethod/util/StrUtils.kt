@@ -30,15 +30,21 @@ internal object StrUtils {
     fun AnotherCompare(string1: String, string2: String):Double {
         val split1 = string1.split("\n")
         val split2 = string2.split("\n")
+        var maxArr:List<String>?=null
+        var minArr:List<String>?=null
+        if(split1.size>=split2.size){
+            maxArr=split1
+            minArr=split2
+        }else{
+            maxArr=split2
+            minArr=split1
+        }
         var sameCount = 0
-        for (s in split1){
-            if(s in split2){
+        for (s in minArr){
+            if(s in maxArr){
                 sameCount+=1
-                break
             }
         }
-        return sameCount.toDouble()/ kotlin.math.min(split1.size, split2.size)
+        return sameCount.toDouble()/ minArr.size
     }
-
-
 }

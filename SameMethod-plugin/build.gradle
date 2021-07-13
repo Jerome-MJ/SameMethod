@@ -30,7 +30,7 @@ dependencies {
 //            //设置插件的GAV参数
 //            pom.groupId = 'com.mj93.sdk'//你的包名
 //            pom.artifactId = 'SMPlugin'
-//            pom.version = '1.1.4' //版本号
+//            pom.version = '1.0.4' //版本号
 //            //文件发布到下面目录  ../是父目录
 //            repository(url: uri('../repo'))
 //        }

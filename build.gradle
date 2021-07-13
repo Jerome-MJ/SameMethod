@@ -15,8 +15,8 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.github.Jerome-MJ:SameMethod:1.0.3'
-//        classpath 'com.mj93.sdk:SMPlugin:1.1.4'
+        classpath 'com.github.Jerome-MJ:SameMethod:1.0.20'
+//        classpath 'com.mj93.sdk:SMPlugin:1.0.4'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

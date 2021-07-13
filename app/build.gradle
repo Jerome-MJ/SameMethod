@@ -37,9 +37,11 @@ android {
 SameFuncExt{
     filterContainsName=["R\$"]
     sameFuncSwitch=true
-    sameFuncRadio=0.5
+    sameFuncRadio=0.1
     filterListName=["top.mj93.util"]
     sameFuncOutputFilePath="../"
+    blackList=[]
+    sameClassCheck=true
 }
 
 dependencies {

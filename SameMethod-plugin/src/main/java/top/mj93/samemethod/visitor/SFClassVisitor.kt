@@ -85,7 +85,6 @@ class SFClassVisitor(
                 if (Const.appExt!!.blackList?.contains("${className}_${n.name}")!!){
                     continue
                 }
-                sb.append(n.name)
                 for (i in inList) {
                     if (i is LineNumberNode) continue
                     if (i is LabelNode) continue
