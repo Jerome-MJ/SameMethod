@@ -96,6 +96,7 @@ class SFClassVisitor(
                     sb.append(insnToString)
                 }
                 val replace = sb.toString()
+                var returnType = n.desc.substring(n.desc.lastIndexOf(")")+1)
 //                val replace = sb.toString()
                 for (s in Const.samesList) {
                     if(Const.appExt!!.sameClassCheck){
@@ -103,6 +104,7 @@ class SFClassVisitor(
                     }else{
                         if(className == s.className)continue
                     }
+                    if(returnType != s.returnType)continue
                     var len = StrUtils.AnotherCompare(s.content, replace)
                     Const.COMPARE_COUNT++
                     if (len > appExt!!.sameFuncRadio) {
@@ -120,7 +122,7 @@ class SFClassVisitor(
                     }
                 }
                 sb.delete(0,sb.length)
-                var sambean = SameFuncBean(className, n.name, replace)
+                var sambean = SameFuncBean(className, n.name, replace,returnType)
                 Const.samesList.add(sambean)
             }
         } catch (e: Exception) {

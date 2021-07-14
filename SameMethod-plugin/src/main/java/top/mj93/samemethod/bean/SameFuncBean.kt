@@ -7,4 +7,4 @@ package top.mj93.samemethod.bean
  * @date 2021/6/30 15:53
  * @version V1.0
  */
-data class SameFuncBean(var className:String,var funcName:String,var content:String)
+data class SameFuncBean(var className:String,var funcName:String,var content:String,var returnType:String)
