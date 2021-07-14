@@ -1,22 +1,9 @@
 package top.mj93.samemethod
 
 import com.android.build.gradle.AppExtension
-import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.objectweb.asm.ClassReader
-import org.objectweb.asm.Opcodes
-import org.objectweb.asm.tree.*
-import org.objectweb.asm.util.Printer
-import org.objectweb.asm.util.Textifier
-import org.objectweb.asm.util.TraceMethodVisitor
-import top.mj93.samemethod.bean.SameFuncBean
-import top.mj93.samemethod.util.IOUtils
-import top.mj93.samemethod.util.LogUtils
-import top.mj93.samemethod.util.StrUtils
 import java.io.File
-import java.io.PrintWriter
-import java.io.StringWriter
 
 class SameFuncPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -32,7 +19,7 @@ class SameFuncPlugin : Plugin<Project> {
         appExtTransform?.registerTransform(AppExtTransform(appExt))
     }
 }
-//
+
 //fun main() {
 //
 //    printSameFun(IOUtils::class.java.name)
@@ -42,7 +29,7 @@ class SameFuncPlugin : Plugin<Project> {
 //fun printSameFun(className: String) {
 //    try {
 //        val classNode = ClassNode()
-//        var classReader = ClassReader(IOUtils::class.java.name)
+//        var classReader = ClassReader(A::class.java.name)
 //        classReader.accept(classNode, 0)
 //        var methods = classNode.methods
 //
@@ -53,9 +40,11 @@ class SameFuncPlugin : Plugin<Project> {
 //            if (isEmptyMethod(n) || isGetSetMethod(n) || isSingleMethod(n)) {
 //                continue
 //            }
+//            if(n.invisibleAnnotations!=null&&n.invisibleAnnotations.isNotEmpty())continue
 //            if (n.name.contains("toString"))continue
 //            if ("<init>" == n.name || "<clinit>" == n.name || n.name.startsWith("access$")) { continue }
 //            sb.append(n.name)
+//            println(n.name)
 //            for (i in inList) {
 //                if (i is LineNumberNode) continue
 //                if (i is LabelNode) continue

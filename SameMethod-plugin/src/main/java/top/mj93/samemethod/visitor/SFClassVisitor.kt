@@ -80,6 +80,7 @@ class SFClassVisitor(
                 if (isEmptyMethod(n) || isGetSetMethod(n) || isSingleMethod(n)) {
                     continue
                 }
+                if(n.invisibleAnnotations!=null&&n.invisibleAnnotations.isNotEmpty())continue
                 if (n.name.contains("toString"))continue
                 if ("<init>" == n.name || "<clinit>" == n.name || n.name.startsWith("access$")) { continue }
                 if (Const.appExt!!.blackList?.contains("${className}_${n.name}")!!){
